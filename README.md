@@ -1,4 +1,4 @@
-# cct-air-gallery
+# cct-art-gallery
 
 Assignment Introduction
 
