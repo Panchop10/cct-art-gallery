@@ -44,23 +44,34 @@ class LoginPage extends React.Component {
       email_msg_err: "",
       password_err: false,
       password_msg_err: "",
+
     };
   }
 
   componentDidMount() {
     this.checkRegistered()
+    this.checkActiveSession()
+
+
+    this.is_mounted = true;
     setTimeout(
       function() {
-          this.setState({cardAnimaton: ""});
+          if(this.is_mounted){
+            this.setState({cardAnimaton: ""});
+          }
       }
       .bind(this),
       200
    );
   }
 
+  componentWillUnmount() {
+    this.is_mounted = false;
+  }
+
   submitForm = e => {
     e.preventDefault();
-    
+
     this.setState({
       email_err: false,
       email_msg_err: "",
@@ -106,8 +117,9 @@ class LoginPage extends React.Component {
         localStorage.setItem('token', data.access);
         localStorage.setItem('refresh', data.refresh);
         localStorage.setItem('username', data.username);
+        localStorage.setItem('admin', data.admin);
 
-        if(data.is_admin){
+        if(data.admin){
           this.props.history.push({
             pathname: '/admin',
             state: { completed: false }
@@ -171,6 +183,17 @@ class LoginPage extends React.Component {
     if(this.props.location.state!==undefined){
       if(this.props.location.state.completed===true){
         this.showNotification("success")
+      }
+    }
+  }
+
+  checkActiveSession = () => {
+    if(localStorage.getItem("admin") !== null){
+      if(localStorage.getItem("admin")==="true"){
+        this.props.history.push('/admin');
+      }
+      if(localStorage.getItem("admin")==="false"){
+        this.props.history.push('/home');
       }
     }
   }

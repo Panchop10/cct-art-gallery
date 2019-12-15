@@ -34,6 +34,7 @@ export default function HeaderLinks(props) {
   };
   const handleCloseProfile = () => {
     setOpenProfile(null);
+    localStorage.clear();
   };
   const classes = useStyles();
   const { rtlActive } = props;

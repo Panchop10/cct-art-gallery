@@ -120,6 +120,14 @@ const productStyle = {
     textAlign: "center",
     marginTop: "10px"
   },
+  cardArtist: {
+    textAlign: "center"
+  },
+  cardWebsite: {
+    textAlign: "center",
+    color: "#A9A9A9",
+    fontSize: "10px",
+  },
   cardTitle: {
     ...cardTitle,
     textAlign: "center"

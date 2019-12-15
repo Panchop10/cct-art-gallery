@@ -121,7 +121,8 @@ const cardStyle = {
     }
   },
   cardProduct: {
-    marginTop: "30px"
+    marginTop: "30px",
+    minHeight: "410px"
   },
   primary: {
     background:

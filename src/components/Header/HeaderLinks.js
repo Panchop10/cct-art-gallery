@@ -49,13 +49,20 @@ export default function HeaderLinks() {
           </Button>
         </NavLink>
       </ListItem>
-      <ListItem className={classes.listItem}>
-        <NavLink to={"/favourites"}>
-          <Button color="white" simple size="lg" block>
-            Favourites
-          </Button>
-        </NavLink>
-      </ListItem>
+
+      {
+        localStorage.getItem('username')!=undefined &&
+        (
+          <ListItem className={classes.listItem}>
+            <NavLink to={"/favourites"}>
+              <Button color="white" simple size="lg" block>
+                Favourites
+              </Button>
+            </NavLink>
+          </ListItem>
+        )
+      }
+
       <ListItem className={classes.listItem}>
         <NavLink to={"/contact"}>
           <Button color="white" simple size="lg" block>
@@ -63,13 +70,20 @@ export default function HeaderLinks() {
           </Button>
         </NavLink>
       </ListItem>
-      <ListItem className={classes.listItem}>
-        <NavLink to={"/profile"}>
-          <Button color="white" simple size="lg" block>
-            Profile
-          </Button>
-        </NavLink>
-      </ListItem>
+
+      {
+        localStorage.getItem('username')!=undefined &&
+        (
+          <ListItem className={classes.listItem}>
+            <NavLink to={"/profile"}>
+              <Button color="white" simple size="lg" block>
+                Profile
+              </Button>
+            </NavLink>
+          </ListItem>
+        )
+      }
+
       {(() => {
         if (localStorage.getItem('token') === null) {
           return (
