@@ -36,13 +36,13 @@ var dashRoutes = [
   },
   {
     path: "/login",
-    name: "Login Page",
+    name: "Login",
     component: LoginPage,
     layout: "/auth"
   },
   {
     path: "/register",
-    name: "Register Page",
+    name: "Register",
     component: RegisterPage,
     layout: "/auth"
   }

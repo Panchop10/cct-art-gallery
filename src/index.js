@@ -46,7 +46,7 @@ ReactDOM.render(
       <Route path="/favourites" component={Favourites} />
       <Route path="/contact" component={Contact} />
       <Route path="/profile" component={Profile} />
-      <Redirect from="/" to="/auth/login" />
+      <Redirect from="/" to="/home" />
     </Switch>
   </Router>,
   document.getElementById("root")

@@ -70,15 +70,35 @@ export default function HeaderLinks() {
           </Button>
         </NavLink>
       </ListItem>
-      <ListItem className={classes.listItem}>
-        <NavLink to={"/"}>
-          <Button color="white" simple size="lg" block>
-            Logout
-          </Button>
-        </NavLink>
-      </ListItem>
+      {(() => {
+        if (localStorage.getItem('token') === null) {
+          return (
+              <ListItem className={classes.listItem}>
+                <NavLink to={"/auth/login"}>
+                  <Button color="white" simple size="lg" block>
+                    Login
+                  </Button>
+                </NavLink>
+              </ListItem>
+          )
+        } else {
+          return (
+              <ListItem className={classes.listItem}>
+                <NavLink to={"/auth/login"}>
+                  <Button onClick={handleLogout} color="white" simple size="lg" block>
+                    Logout
+                  </Button>
+                </NavLink>
+              </ListItem>
+          )
+        }
+      })()}
     </List>
   );
+}
+
+function handleLogout(e) {
+  localStorage.clear();
 }
 
 HeaderLinks.defaultProps = {
