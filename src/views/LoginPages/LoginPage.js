@@ -96,8 +96,10 @@ class LoginPage extends React.Component {
   }
 
   fetchData = () => {
+    const filteredEmail = this.state.email==="CCT" ? "cct@cct.ie" : this.state.email;
+
     var data = {
-      email: this.state.email,
+      email: filteredEmail,
       password: this.state.password
     };
 
@@ -249,7 +251,6 @@ class LoginPage extends React.Component {
                       onChange: event => {
                          this.setState({email: event.target.value})
                       },
-                      type: "email",
                     }}
                   />
                   <CustomInput

@@ -33,6 +33,9 @@ import cardProduct3 from "assets/img/examples/ga_2.jpg";
 import cardProduct4 from "assets/img/examples/ga_3.jpg";
 import cardProduct2 from "assets/img/examples/ga_4.jpg";
 
+import placeholder from "assets/img/image_placeholder.jpg";
+
+
 const useStyles = makeStyles(productStyle);
 
 export default function GalleryPage() {
@@ -238,7 +241,7 @@ export default function GalleryPage() {
                   <Card product>
                     <CardHeader image>
                       <a href="#top">
-                        <img src={artPiece.photo} alt="cardProduct" />
+                      <img src={artPiece.photo===null ? placeholder : artPiece.photo} alt={artPiece.slug_name}/>
                       </a>
                     </CardHeader>
                     <CardBody>

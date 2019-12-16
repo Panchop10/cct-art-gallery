@@ -17,6 +17,9 @@ const ARTISTS = `${HOST}/artists/`;
 //USERS
 const USERS = `${HOST}/users/`;
 
+//CATEGORIES
+const CATEGORIES = `${HOST}/categories/`;
+
 
 
 export {
@@ -26,4 +29,5 @@ export {
   LIKEARTPIECES,
   ARTISTS,
   USERS,
+  CATEGORIES,
 };

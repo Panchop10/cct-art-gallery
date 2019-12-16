@@ -1,18 +1,43 @@
 import buttonGroupStyle from "assets/jss/material-dashboard-pro-react/buttonGroupStyle.js";
 import customCheckboxRadioSwitch from "assets/jss/material-dashboard-pro-react/customCheckboxRadioSwitch.js";
+import buttonStyle from "assets/jss/material-dashboard-pro-react/components/buttonStyle.js";
 import {
+  defaultFont,
+  grayColor,
   cardTitle,
-  grayColor
 } from "assets/jss/material-dashboard-pro-react.js";
+import modalStyle from "assets/jss/material-dashboard-pro-react/modalStyle.js";
+import customSelectStyle from "assets/jss/material-dashboard-pro-react/customSelectStyle.js";
 
-const extendedTablesStyle = {
+const extendedTablesStyle = theme => ({
   ...customCheckboxRadioSwitch,
   ...buttonGroupStyle,
+  ...buttonStyle,
+  ...customSelectStyle,
+  ...modalStyle(theme),
+  cardTitle: {
+    marginTop: "0",
+    marginBottom: "3px",
+    color: grayColor[2],
+    fontSize: "18px"
+  },
+  cardHeader: {
+    zIndex: "3"
+  },
+  cardSubtitle: {
+    ...defaultFont,
+    color: grayColor[0],
+    fontSize: "14px",
+    margin: "0 0 10px"
+  },
   right: {
     textAlign: "right"
   },
   center: {
     textAlign: "center"
+  },
+  left: {
+    textAlign: "left"
   },
   description: {
     maxWidth: "150px"
@@ -86,6 +111,6 @@ const extendedTablesStyle = {
     marginTop: "15px",
     marginBottom: "0px"
   }
-};
+});
 
 export default extendedTablesStyle;

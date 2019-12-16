@@ -24,7 +24,8 @@ export default function ImageUpload(props) {
     };
     reader.readAsDataURL(file);
 
-    console.log(reader.result)
+    props.parentImage && props.parentImage(file);
+
   };
   // eslint-disable-next-line
   const handleSubmit = e => {
@@ -46,7 +47,7 @@ export default function ImageUpload(props) {
     <div className="fileinput text-center">
       <input type="file" onChange={handleImageChange} ref={fileInput} />
       <div className={"thumbnail" + (avatar ? " img-circle" : "")}>
-        <img src={imagePreviewUrl} alt="..." />
+        <img src={props.preview ? props.previewImage : imagePreviewUrl} alt="..." />
       </div>
       <div>
         {file === null ? (
@@ -73,5 +74,8 @@ ImageUpload.propTypes = {
   avatar: PropTypes.bool,
   addButtonProps: PropTypes.object,
   changeButtonProps: PropTypes.object,
-  removeButtonProps: PropTypes.object
+  removeButtonProps: PropTypes.object,
+  parentImage: PropTypes.func,
+  previewImage: PropTypes.string,
+  preview: PropTypes.bool,
 };

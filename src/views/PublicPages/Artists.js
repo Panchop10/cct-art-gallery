@@ -28,6 +28,8 @@ import cardProduct3 from "assets/img/examples/artist_2.jpg";
 import cardProduct4 from "assets/img/examples/artist_3.jpg";
 import cardProduct2 from "assets/img/examples/artist_4.jpg";
 
+import avatar from "assets/img/default-avatar.png";
+
 const useStyles = makeStyles(productStyle);
 
 export default function GalleryPage() {
@@ -146,7 +148,7 @@ export default function GalleryPage() {
                   <Card product>
                     <CardHeader artist>
                       <a href="#top">
-                        <img src={artist.photo} alt={artist.slug_name} />
+                      <img src={artist.photo===null ? avatar : artist.photo} alt={artist.slug_name}/>
                       </a>
                     </CardHeader>
                     <CardBody>

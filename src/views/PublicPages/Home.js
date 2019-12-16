@@ -41,6 +41,8 @@ import cardProduct4 from "assets/img/examples/ga_3.jpg";
 import cardProduct2 from "assets/img/examples/ga_4.jpg";
 import product1 from "assets/img/examples/ga_1.jpg";
 
+import placeholder from "assets/img/image_placeholder.jpg";
+
 const useStyles = makeStyles(productStyle);
 
 export default function Home() {
@@ -193,72 +195,30 @@ export default function Home() {
 		<div className = {classNames(classes.section, classes.sectionGray)}>
 			<div className = {classes.container}>
 				<div className = {classNames(classes.main, classes.mainRaised)}>
+					<Snackbar
+						place = "bc"
+						color = "danger"
+						icon = {AddAlert}
+						message = {message}
+						open = {notification}
+						closeNotification = {() => setNotification(false)}
+						close
+					/>
 					<GridContainer>
-						<Snackbar
-							place = "bc"
-							color = "danger"
-							icon = {AddAlert}
-							message = {message}
-							open = {notification}
-							closeNotification = {() => setNotification(false)}
-							close
-						/>
-						<GridItem md={4} sm={4}>
-							<ImageGallery
-								showFullscreenButton = {false}
-								showPlayButton = {false}
-								startIndex = {0}
-								items = {images}
+						<GridItem md={12} sm={12}>
+							<iframe src='https://www.youtube.com/embed/dq0wSKDVLGY?autoplay=1&mute=1'
+							        frameBorder='0'
+							        allow='autoplay; encrypted-media'
+							        allowFullScreen
+							        title='video'
+											style={{
+							          position: "relative",
+							          top: 0,
+							          left: 0,
+							          width: "100%",
+							          height: "400px"
+							        }}
 							/>
-						</GridItem>
-						<GridItem md={8} sm={8}>
-							<h2 className = {classes.title}> Selfie in Lisbon </h2>
-							<h3 className = {classes.mainPrice}> €382 </h3>
-							<Accordion active = {0}
-								activeColor = "rose"
-								collapses = {
-									[{
-											title: "Description",
-											content: (
-												<p>
-												This picture is from a couple who did tourism in
-												Lisbon.The light was so strong that there were many contrasts of light and shadow among the walkers.Pictorially, these strong contrasts give a lot of
-												play.
-												</p>
-											)
-										},
-										{
-											title: "Artist Information",
-											content: (
-												<p>
-												437 / 5000 In recent years I have worked mainly on two lines: the first shows the experience of diving, it is a study of the reflections of the sun in the water, of
-												the intense colors, of marine life...The second shows the experience of the day day, fruit of the observation of how people move through their city,
-												their gestures when walking, their clothes...In both lines there is usually a common element: The human figure as the main protagonist.
-												</p>
-											)
-										},
-										{
-											title: "Details",
-											content: (
-												<ul>
-													<li > Country Spain < /li>
-													<li > Category: Painting < /li>
-													<li > Theme: Figure < /li>
-													<li > Technique: Acrylic < /li>
-													<li > Support: Table < /li>
-													<li > Measures: 24 x 19 cm < /li>
-													<li > In Artelista since: November 2, 2019 < /li>
-												</ul>
-											)
-										}
-									]
-								}
-							/>
-							<GridContainer className = {classes.pullRight}>
-								<Button round color = "rose">
-									Add to Favourites < Favorite / >
-								</Button>
-							</GridContainer>
 						</GridItem>
 					</GridContainer>
 				</div>
@@ -274,7 +234,7 @@ export default function Home() {
 				<Card product >
 					<CardHeader image >
 						<a href = "#top" >
-							<img src = {artPiece.photo}	alt = "cardProduct" />
+							<img src={artPiece.photo===null ? placeholder : artPiece.photo} alt={artPiece.slug_name}/>
 						</a>
 					</CardHeader>
 				<CardBody >

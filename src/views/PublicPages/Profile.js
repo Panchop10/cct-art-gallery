@@ -42,6 +42,9 @@ const useStyles = makeStyles(styles);
 export default function GalleryPage() {
   const classes = useStyles();
 
+  // IMAGE
+  const [imageFile, setImageFile] = React.useState("");
+
   // form values
   const [email, setEmail] = React.useState("");
   const [firstName, setFirstName] = React.useState("");
@@ -57,6 +60,10 @@ export default function GalleryPage() {
   // fetch code
   var codefetchUser = 0;
   var codeupdateUser = 0;
+
+  const getImage = file => {
+    setImageFile(file);
+  }
 
   React.useEffect(() => {
     fetchUser();
@@ -118,23 +125,28 @@ export default function GalleryPage() {
         // password_confirmation: confirmPassword
       };
 
+      const formData  = new FormData();
+      formData.append("data", JSON.stringify(data));
+      if(imageFile!=""){
+        formData.append("photo", imageFile);
+      }
+
       var endpoint = USERS+localStorage.getItem('username')+"/";
 
       fetch(endpoint, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json",
             "Authorization": "Bearer "+localStorage.getItem('token')
         },
-        body: JSON.stringify(data)
+        body: formData
       })
       .then(response => {
-        //console.log(response)
+        console.log(response)
         codeupdateUser = response.status
         return response.json()
       })
       .then(data => {
-        //console.log(data)
+        console.log(data)
         if(codeupdateUser === 200){
           fetchUser();
           setMessage("User updated successfully.");
@@ -143,7 +155,7 @@ export default function GalleryPage() {
       }).catch( err => {
         setMessage("The website encountered an unexpected error. Please try again later.");
         showNotification("error")
-        //console.log(err);
+        console.log(err);
       });
     }
   }
@@ -254,6 +266,7 @@ export default function GalleryPage() {
                         color: "danger",
                         round: true
                       }}
+                      parentImage={getImage}
                     />
                   </GridItem>
                   <GridItem xs={12} sm={12} md={10}>
